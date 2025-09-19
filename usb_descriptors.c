@@ -66,257 +66,257 @@ USB_DESC_ATTRIBUTES uint8_t CyFxUSBBOSDscr[32] =
 /* Standard high speed configuration descriptor */
 USB_DESC_ATTRIBUTES uint8_t CyFxUSBHSConfigDscr[512] =
 {
-	/* Configuration descriptor */
-	0x09,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_CFG,           /* Configuration descriptor type */
-	0x72,0x00,						/* Length of this descriptor and all sub descriptors */
-	0x04,                           /* Number of interfaces */
-	0x01,                           /* Configuration number */
-	0x00,                           /* COnfiguration string index */
-	0xA0,                           /* Config characteristics - bus powered */
-	0x32,                           /* Max power consumption of device (in 2mA unit) : 200mA */
+    /* Configuration descriptor */
+    0x09,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_CFG,           /* Configuration descriptor type */
+    0x72,0x00,                      /* Length of this descriptor and all sub descriptors */
+    0x04,                           /* Number of interfaces */
+    0x01,                           /* Configuration number */
+    0x00,                           /* COnfiguration string index */
+    0xA0,                           /* Config characteristics - bus powered */
+    0x32,                           /* Max power consumption of device (in 2mA unit) : 200mA */
 
-	/* Interface association descriptor */
-	0x08,                           /* Descriptor size */
-	0x0B,                           /* Interface association descr type */
-	0x00,                           /* Interface number of first Interface */
-	0x02,                           /* Number of Interfaces */
-	0x02,                           /* Interface class. */
-	0x02,                           /* Interface sub-class. */
-	0x01,                           /* Interface protocol. */
-	0x00,                           /* Interface string index. */
+    /* Interface association descriptor */
+    0x08,                           /* Descriptor size */
+    0x0B,                           /* Interface association descr type */
+    0x00,                           /* Interface number of first Interface */
+    0x02,                           /* Number of Interfaces */
+    0x02,                           /* Interface class. */
+    0x02,                           /* Interface sub-class. */
+    0x01,                           /* Interface protocol. */
+    0x00,                           /* Interface string index. */
 
-	/* Interface descriptor 0 */
-	0x09,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_INTF,          /* Interface Descriptor type */
-	0x00,                           /* Interface number. */
-	0x00,                           /* Alternate settings number. */
-	0x01,                           /* Number of endpoints. */
-	0x02,                           /* Interface class. */
-	0x02,                           /* Interface sub-class. */
-	0x01,                           /* Interface protocol. */
-	0x00,                           /* Interface string index. */
+    /* Interface descriptor 0 */
+    0x09,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_INTF,          /* Interface Descriptor type */
+    0x00,                           /* Interface number. */
+    0x00,                           /* Alternate settings number. */
+    0x01,                           /* Number of endpoints. */
+    0x02,                           /* Interface class. */
+    0x02,                           /* Interface sub-class. */
+    0x01,                           /* Interface protocol. */
+    0x00,                           /* Interface string index. */
 
-	0x05, 0x24, 0x00, 0x10, 0x01,
-	0x04, 0x24, 0x02, 0x02,
-	0x05, 0x24, 0x06, 0x00, 0x01,
-	0x05, 0x24, 0x01, 0x00, 0x01,
+    0x05, 0x24, 0x00, 0x10, 0x01,
+    0x04, 0x24, 0x02, 0x02,
+    0x05, 0x24, 0x06, 0x00, 0x01,
+    0x05, 0x24, 0x01, 0x00, 0x01,
 
-	/* Endpoint Descriptor(Interrupt) */
-	0x07,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
-	0x80 | 0x03,                    /* Endpoint address and description */
-	0x03,                           /* Interrupt endpoint type */
-	0x40,0x00,                      /* Max packet size = 64 bytes */
-	0x0A,                           /* Servicing interval for data transfers */
+    /* Endpoint Descriptor(Interrupt) */
+    0x07,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
+    0x80 | 0x03,                    /* Endpoint address and description */
+    0x03,                           /* Interrupt endpoint type */
+    0x40,0x00,                      /* Max packet size = 64 bytes */
+    0x0A,                           /* Servicing interval for data transfers */
 
-	/* Interface descriptor 1. */
-	0x09,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_INTF,          /* Endpoint descriptor type */
-	0x01,                           /* Interface number. */
-	0x00,                           /* Alternate settings number. */
-	0x02,                           /* Number of endpoints. */
-	0x0A,                           /* Interface class. */
-	0x00,                           /* Interface sub-class. */
-	0x00,                           /* Interface protocol. */
-	0x00,                           /* Interface string index. */
+    /* Interface descriptor 1. */
+    0x09,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_INTF,          /* Endpoint descriptor type */
+    0x01,                           /* Interface number. */
+    0x00,                           /* Alternate settings number. */
+    0x02,                           /* Number of endpoints. */
+    0x0A,                           /* Interface class. */
+    0x00,                           /* Interface sub-class. */
+    0x00,                           /* Interface protocol. */
+    0x00,                           /* Interface string index. */
 
-	/* Endpoint Descriptor(Interrupt) */
-	0x07,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
-	0x01,                           /* Endpoint address and description */
-	0x02,                           /* Interrupt endpoint type */
-	0x00,0x02,                      /* Max packet size = 64 bytes */
-	0x00,                           /* Servicing interval for data transfers */
+    /* Endpoint Descriptor(Interrupt) */
+    0x07,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
+    0x01,                           /* Endpoint address and description */
+    0x02,                           /* Interrupt endpoint type */
+    0x00,0x02,                      /* Max packet size = 64 bytes */
+    0x00,                           /* Servicing interval for data transfers */
 
-	/* Endpoint Descriptor(BULK_IN) */
-	0x07,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
-	0x82,                           /* Endpoint address and description */
-	0x02,                           /* Interrupt endpoint type */
-	0x00,0x02,                      /* Max packet size = 64 bytes */
-	0x00,                           /* Servicing interval for data transfers */
+    /* Endpoint Descriptor(BULK_IN) */
+    0x07,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
+    0x82,                           /* Endpoint address and description */
+    0x02,                           /* Interrupt endpoint type */
+    0x00,0x02,                      /* Max packet size = 64 bytes */
+    0x00,                           /* Servicing interval for data transfers */
 
-	/* Interface descriptor 2. */
-	0x09,                           /* Descriptor size. */
-	CY_USB_DSCR_TYPE_INTF,          /* Descriptor type. */
-	0x02,                           /* Interface number. */
-	0x00,                           /* Alternate settings number. */
-	0x03,                           /* Number of endpoints. */
-	0xFF,                           /* Interface class. */
-	0x04,                           /* Interface sub-class. */
-	0x00,                           /* Interface protocol. */
-	0x00,                           /* Interface string index. */
+    /* Interface descriptor 2. */
+    0x09,                           /* Descriptor size. */
+    CY_USB_DSCR_TYPE_INTF,          /* Descriptor type. */
+    0x02,                           /* Interface number. */
+    0x00,                           /* Alternate settings number. */
+    0x03,                           /* Number of endpoints. */
+    0xFF,                           /* Interface class. */
+    0x04,                           /* Interface sub-class. */
+    0x00,                           /* Interface protocol. */
+    0x00,                           /* Interface string index. */
 
-	/* Endpoint Descriptor(BULK_OUT) */
-	0x07,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
-	APP_CMD_OUT_EP,                 /* Endpoint address and description */
-	0x02,                           /* endpoint type */
-	0x00,0x02,                      /* Max packet size = 64 bytes */
-	0x00,                           /* Servicing interval for data transfers */
+    /* Endpoint Descriptor(BULK_OUT) */
+    0x07,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
+    APP_CMD_OUT_EP,                 /* Endpoint address and description */
+    0x02,                           /* endpoint type */
+    0x00,0x02,                      /* Max packet size = 64 bytes */
+    0x00,                           /* Servicing interval for data transfers */
 
-	/* Endpoint Descriptor(BULK_IN) */
-	0x07,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
-	0x80 | APP_RESPONSE_IN_EP,      /* Endpoint address and description */
-	0x02,                           /* endpoint type */
-	0x00,0x02,                      /* Max packet size = 64 bytes */
-	0x00,                           /* Servicing interval for data transfers */
+    /* Endpoint Descriptor(BULK_IN) */
+    0x07,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
+    0x80 | APP_RESPONSE_IN_EP,      /* Endpoint address and description */
+    0x02,                           /* endpoint type */
+    0x00,0x02,                      /* Max packet size = 64 bytes */
+    0x00,                           /* Servicing interval for data transfers */
 
-	/* Endpoint Descriptor(Interrupt) */
-	0x07,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
-	0x80 | 0x06,                    /* Endpoint address and description */
-	0x03,                           /* endpoint type */
-	0x40,0x00,                      /* Max packet size = 64 bytes */
-	0x0A,                           /* Servicing interval for data transfers */
+    /* Endpoint Descriptor(Interrupt) */
+    0x07,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
+    0x80 | 0x06,                    /* Endpoint address and description */
+    0x03,                           /* endpoint type */
+    0x40,0x00,                      /* Max packet size = 64 bytes */
+    0x0A,                           /* Servicing interval for data transfers */
 
-	/* Interface descriptor 3. */
-	0x09,                           /* Descriptor size. */
-	CY_USB_DSCR_TYPE_INTF,          /* Descriptor type. */
-	0x03,                           /* Interface number. */
-	0x00,                           /* Alternate settings number. */
-	0x00,                           /* Number of endpoints. */
-	0xFF,                           /* Interface class. */
-	0x05,                           /* Interface sub-class. */
-	0x00,                           /* Interface protocol. */
-	0x00                            /* Interface string index. */
+    /* Interface descriptor 3. */
+    0x09,                           /* Descriptor size. */
+    CY_USB_DSCR_TYPE_INTF,          /* Descriptor type. */
+    0x03,                           /* Interface number. */
+    0x00,                           /* Alternate settings number. */
+    0x00,                           /* Number of endpoints. */
+    0xFF,                           /* Interface class. */
+    0x05,                           /* Interface sub-class. */
+    0x00,                           /* Interface protocol. */
+    0x00                            /* Interface string index. */
 };
 
 /* Standard device qualifier descriptor */
 USB_DESC_ATTRIBUTES uint8_t CyFxUSBDeviceQualDscr[] =
 {
-	0x0A,                           /* descriptor size */
-	0x06,                           /* Device qualifier descriptor type */
-	0x00,0x02,                      /* USB 2.0 */
-	0x00,                           /* Device class */
-	0x00,                           /* Device sub-class */
-	0x00,                           /* Device protocol */
-	0x40,                           /* Maxpacket size for EP0 : 64 bytes */
-	0x01,                           /* Number of configurations */
-	0x00                            /* Reserved */
+    0x0A,                           /* descriptor size */
+    0x06,                           /* Device qualifier descriptor type */
+    0x00,0x02,                      /* USB 2.0 */
+    0x00,                           /* Device class */
+    0x00,                           /* Device sub-class */
+    0x00,                           /* Device protocol */
+    0x40,                           /* Maxpacket size for EP0 : 64 bytes */
+    0x01,                           /* Number of configurations */
+    0x00                            /* Reserved */
 };
 
 /* Standard full speed configuration descriptor: full speed is not supported. */
 USB_DESC_ATTRIBUTES uint8_t CyFxUSBFSConfigDscr[] =
 {
-	/* Configuration descriptor */
-	0x09,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_CFG,           /* Configuration descriptor type */
-	0x72,0x00,						/* Length of this descriptor and all sub descriptors */
-	0x04,                           /* Number of interfaces */
-	0x01,                           /* Configuration number */
-	0x00,                           /* COnfiguration string index */
-	0xA0,                           /* Config characteristics - bus powered */
-	0x32,                           /* Max power consumption of device (in 2mA unit) : 200mA */
+    /* Configuration descriptor */
+    0x09,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_CFG,           /* Configuration descriptor type */
+    0x72,0x00,                      /* Length of this descriptor and all sub descriptors */
+    0x04,                           /* Number of interfaces */
+    0x01,                           /* Configuration number */
+    0x00,                           /* COnfiguration string index */
+    0xA0,                           /* Config characteristics - bus powered */
+    0x32,                           /* Max power consumption of device (in 2mA unit) : 200mA */
 
-	/* Interface association descriptor */
-	0x08,                           /* Descriptor size */
-	0x0B,                           /* Interface association descr type */
-	0x00,                           /* Interface number of first Interface */
-	0x02,                           /* Number of Interfaces */
-	0x02,                           /* Interface class. */
-	0x02,                           /* Interface sub-class. */
-	0x01,                           /* Interface protocol. */
-	0x00,                           /* Interface string index. */
+    /* Interface association descriptor */
+    0x08,                           /* Descriptor size */
+    0x0B,                           /* Interface association descr type */
+    0x00,                           /* Interface number of first Interface */
+    0x02,                           /* Number of Interfaces */
+    0x02,                           /* Interface class. */
+    0x02,                           /* Interface sub-class. */
+    0x01,                           /* Interface protocol. */
+    0x00,                           /* Interface string index. */
 
-	/* Interface descriptor 0 */
-	0x09,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_INTF,          /* Interface Descriptor type */
-	0x00,                           /* Interface number. */
-	0x00,                           /* Alternate settings number. */
-	0x01,                           /* Number of endpoints. */
-	0x02,                           /* Interface class. */
-	0x02,                           /* Interface sub-class. */
-	0x01,                           /* Interface protocol. */
-	0x00,                           /* Interface string index. */
+    /* Interface descriptor 0 */
+    0x09,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_INTF,          /* Interface Descriptor type */
+    0x00,                           /* Interface number. */
+    0x00,                           /* Alternate settings number. */
+    0x01,                           /* Number of endpoints. */
+    0x02,                           /* Interface class. */
+    0x02,                           /* Interface sub-class. */
+    0x01,                           /* Interface protocol. */
+    0x00,                           /* Interface string index. */
 
-	0x05, 0x24, 0x00, 0x10, 0x01,
-	0x04, 0x24, 0x02, 0x02,
-	0x05, 0x24, 0x06, 0x00, 0x01,
-	0x05, 0x24, 0x01, 0x00, 0x01,
+    0x05, 0x24, 0x00, 0x10, 0x01,
+    0x04, 0x24, 0x02, 0x02,
+    0x05, 0x24, 0x06, 0x00, 0x01,
+    0x05, 0x24, 0x01, 0x00, 0x01,
 
-	/* Endpoint Descriptor(Interrupt) */
-	0x07,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
-	0x80 | 0x03,                    /* Endpoint address and description */
-	0x03,                           /* Interrupt endpoint type */
-	0x40,0x00,                      /* Max packet size = 64 bytes */
-	0x0A,                           /* Servicing interval for data transfers */
+    /* Endpoint Descriptor(Interrupt) */
+    0x07,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
+    0x80 | 0x03,                    /* Endpoint address and description */
+    0x03,                           /* Interrupt endpoint type */
+    0x40,0x00,                      /* Max packet size = 64 bytes */
+    0x0A,                           /* Servicing interval for data transfers */
 
-	/* Interface descriptor 1. */
-	0x09,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_INTF,          /* Endpoint descriptor type */
-	0x01,                           /* Interface number. */
-	0x00,                           /* Alternate settings number. */
-	0x02,                           /* Number of endpoints. */
-	0x0A,                           /* Interface class. */
-	0x00,                           /* Interface sub-class. */
-	0x00,                           /* Interface protocol. */
-	0x00,                           /* Interface string index. */
+    /* Interface descriptor 1. */
+    0x09,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_INTF,          /* Endpoint descriptor type */
+    0x01,                           /* Interface number. */
+    0x00,                           /* Alternate settings number. */
+    0x02,                           /* Number of endpoints. */
+    0x0A,                           /* Interface class. */
+    0x00,                           /* Interface sub-class. */
+    0x00,                           /* Interface protocol. */
+    0x00,                           /* Interface string index. */
 
-	/* Endpoint Descriptor(Interrupt) */
-	0x07,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
-	0x01,                           /* Endpoint address and description */
-	0x02,                           /* Interrupt endpoint type */
-	0x40,0x00,                      /* Max packet size = 64 bytes */
-	0x00,                           /* Servicing interval for data transfers */
+    /* Endpoint Descriptor(Interrupt) */
+    0x07,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
+    0x01,                           /* Endpoint address and description */
+    0x02,                           /* Interrupt endpoint type */
+    0x40,0x00,                      /* Max packet size = 64 bytes */
+    0x00,                           /* Servicing interval for data transfers */
 
-	/* Endpoint Descriptor(BULK_IN) */
-	0x07,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
-	0x82,                           /* Endpoint address and description */
-	0x02,                           /* Interrupt endpoint type */
-	0x40,0x00,                      /* Max packet size = 64 bytes */
-	0x00,                           /* Servicing interval for data transfers */
+    /* Endpoint Descriptor(BULK_IN) */
+    0x07,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
+    0x82,                           /* Endpoint address and description */
+    0x02,                           /* Interrupt endpoint type */
+    0x40,0x00,                      /* Max packet size = 64 bytes */
+    0x00,                           /* Servicing interval for data transfers */
 
-	/* Interface descriptor 2. */
-	0x09,                           /* Descriptor size. */
-	CY_USB_DSCR_TYPE_INTF,          /* Descriptor type. */
-	0x02,                           /* Interface number. */
-	0x00,                           /* Alternate settings number. */
-	0x03,                           /* Number of endpoints. */
-	0xFF,                           /* Interface class. */
-	0x04,                           /* Interface sub-class. */
-	0x00,                           /* Interface protocol. */
-	0x00,                           /* Interface string index. */
+    /* Interface descriptor 2. */
+    0x09,                           /* Descriptor size. */
+    CY_USB_DSCR_TYPE_INTF,          /* Descriptor type. */
+    0x02,                           /* Interface number. */
+    0x00,                           /* Alternate settings number. */
+    0x03,                           /* Number of endpoints. */
+    0xFF,                           /* Interface class. */
+    0x04,                           /* Interface sub-class. */
+    0x00,                           /* Interface protocol. */
+    0x00,                           /* Interface string index. */
 
-	/* Endpoint Descriptor(BULK_OUT) */
-	0x07,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
-	APP_CMD_OUT_EP,                 /* Endpoint address and description */
-	0x02,                           /* endpoint type */
-	0x40,0x00,                      /* Max packet size = 64 bytes */
-	0x00,                           /* Servicing interval for data transfers */
+    /* Endpoint Descriptor(BULK_OUT) */
+    0x07,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
+    APP_CMD_OUT_EP,                 /* Endpoint address and description */
+    0x02,                           /* endpoint type */
+    0x40,0x00,                      /* Max packet size = 64 bytes */
+    0x00,                           /* Servicing interval for data transfers */
 
-	/* Endpoint Descriptor(BULK_IN) */
-	0x07,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
-	0x80 | APP_RESPONSE_IN_EP,      /* Endpoint address and description */
-	0x02,                           /* endpoint type */
-	0x40,0x00,                      /* Max packet size = 64 bytes */
-	0x00,                           /* Servicing interval for data transfers */
+    /* Endpoint Descriptor(BULK_IN) */
+    0x07,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
+    0x80 | APP_RESPONSE_IN_EP,      /* Endpoint address and description */
+    0x02,                           /* endpoint type */
+    0x40,0x00,                      /* Max packet size = 64 bytes */
+    0x00,                           /* Servicing interval for data transfers */
 
-	/* Endpoint Descriptor(Interrupt) */
-	0x07,                           /* Descriptor size */
-	CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
-	0x80 | 0x06,                    /* Endpoint address and description */
-	0x03,                           /* endpoint type */
-	0x40,0x00,                      /* Max packet size = 64 bytes */
-	0x0A,                           /* Servicing interval for data transfers */
+    /* Endpoint Descriptor(Interrupt) */
+    0x07,                           /* Descriptor size */
+    CY_USB_DSCR_TYPE_ENDP,          /* Endpoint descriptor type */
+    0x80 | 0x06,                    /* Endpoint address and description */
+    0x03,                           /* endpoint type */
+    0x40,0x00,                      /* Max packet size = 64 bytes */
+    0x0A,                           /* Servicing interval for data transfers */
 
-	/* Interface descriptor 3. */
-	0x09,                           /* Descriptor size. */
-	CY_USB_DSCR_TYPE_INTF,          /* Descriptor type. */
-	0x03,                           /* Interface number. */
-	0x00,                           /* Alternate settings number. */
-	0x00,                           /* Number of endpoints. */
-	0xFF,                           /* Interface class. */
-	0x05,                           /* Interface sub-class. */
-	0x00,                           /* Interface protocol. */
-	0x00                            /* Interface string index. */
+    /* Interface descriptor 3. */
+    0x09,                           /* Descriptor size. */
+    CY_USB_DSCR_TYPE_INTF,          /* Descriptor type. */
+    0x03,                           /* Interface number. */
+    0x00,                           /* Alternate settings number. */
+    0x00,                           /* Number of endpoints. */
+    0xFF,                           /* Interface class. */
+    0x05,                           /* Interface sub-class. */
+    0x00,                           /* Interface protocol. */
+    0x00                            /* Interface string index. */
 };
 
 /* Standard language ID string descriptor */

@@ -118,7 +118,11 @@ void Cy_Jtag_AppTaskHandler(void *pTaskParam)
     vTaskDelay(500);
 
     /* If VBus is present, enable the USB connection. */
-    pAppCtxt->vbusPresent = (Cy_GPIO_Read(VBUS_DETECT_GPIO_PORT, VBUS_DETECT_GPIO_PIN) == VBUS_DETECT_STATE);
+    pAppCtxt->vbusPresent =
+    (Cy_GPIO_Read(VBUS_DETECT_GPIO_PORT, VBUS_DETECT_GPIO_PIN) == VBUS_DETECT_STATE);
+#if USBFS_LOGS_ENABLE
+    vTaskDelay(500);
+#endif /* USBFS_LOGS_ENABLE */
     if (pAppCtxt->vbusPresent) {
         Cy_USB_EnableUsbHSConnection(pAppCtxt);
     }
@@ -188,35 +192,35 @@ void Cy_Jtag_AppTaskHandler(void *pTaskParam)
                 
                 break;
             case CY_APP_QUERY_RCVD_EVT_FLAG:
-            	    pAppCtxt->glWriteBufferIdx += pAppCtxt->glHsRcvdDataCount;
-					Cy_USB_AppQueueRead(pAppCtxt, (uint8_t)APP_CMD_OUT_EP, (uint8_t*)pAppCtxt->glWriteBuffer, CY_APP_MAX_BUFFER_SIZE);
+                    pAppCtxt->glWriteBufferIdx += pAppCtxt->glHsRcvdDataCount;
+                    Cy_USB_AppQueueRead(pAppCtxt, (uint8_t)APP_CMD_OUT_EP, (uint8_t*)pAppCtxt->glWriteBuffer, CY_APP_MAX_BUFFER_SIZE);
 
-					if(pAppCtxt->glJtagEnabled == true){
-						if ((pAppCtxt->glWriteDataCount != 0x00) && (pAppCtxt->glWriteDataCount == pAppCtxt->glWriteBufferIdx)){
-							memset((uint8_t *)pAppCtxt->glReadBuffer, 0x00, CY_APP_MAX_BUFFER_SIZE);
-							Cy_Jtag_ParseData ((uint8_t *)pAppCtxt->glWriteBuffer, pAppCtxt->glWriteDataCount, (uint8_t *)pAppCtxt->glReadBuffer);
-							memset((uint8_t *)pAppCtxt->glWriteBuffer, 0x00, CY_APP_MAX_BUFFER_SIZE);
-							pAppCtxt->glWriteDataCount = 0;
-						}
-					}
+                    if(pAppCtxt->glJtagEnabled == true){
+                        if ((pAppCtxt->glWriteDataCount != 0x00) && (pAppCtxt->glWriteDataCount == pAppCtxt->glWriteBufferIdx)){
+                            memset((uint8_t *)pAppCtxt->glReadBuffer, 0x00, CY_APP_MAX_BUFFER_SIZE);
+                            Cy_Jtag_ParseData ((uint8_t *)pAppCtxt->glWriteBuffer, pAppCtxt->glWriteDataCount, (uint8_t *)pAppCtxt->glReadBuffer);
+                            memset((uint8_t *)pAppCtxt->glWriteBuffer, 0x00, CY_APP_MAX_BUFFER_SIZE);
+                            pAppCtxt->glWriteDataCount = 0;
+                        }
+                    }
                    break;
-			case CY_APP_SEND_RSP_EVT_FLAG:
-					if(pAppCtxt->glReadDataCount){
-						uint16_t count = CY_APP_MAX_BUFFER_SIZE;
-						if (pAppCtxt->glReadDataCount < CY_APP_MAX_BUFFER_SIZE){
-							count = pAppCtxt->glReadDataCount;
-						}
-						Cy_USB_AppQueueWrite(pAppCtxt, APP_RESPONSE_IN_EP, pAppCtxt->glReadBuffer, count);
-						pAppCtxt->glReadDataCount -= count;
-						if (pAppCtxt->glReadDataCount != 0x00){
-							DBG_APP_ERR("CY_FX_EP_DEV_TO_HOST stall\r\n");
-							Cy_USB_USBD_EndpSetClearStall(pAppCtxt->pUsbdCtxt, APP_RESPONSE_IN_EP, CY_USB_ENDP_DIR_IN, true);
-						}
-					}
-				break;
-			case CY_APP_RSP_SENT_EVT_FLAG:
-					DBG_APP_TRACE(" CY_APP_RSP_SENT_EVT_FLAG\r\n");
-				break;
+            case CY_APP_SEND_RSP_EVT_FLAG:
+                    if(pAppCtxt->glReadDataCount){
+                        uint16_t count = CY_APP_MAX_BUFFER_SIZE;
+                        if (pAppCtxt->glReadDataCount < CY_APP_MAX_BUFFER_SIZE){
+                            count = pAppCtxt->glReadDataCount;
+                        }
+                        Cy_USB_AppQueueWrite(pAppCtxt, APP_RESPONSE_IN_EP, pAppCtxt->glReadBuffer, count);
+                        pAppCtxt->glReadDataCount -= count;
+                        if (pAppCtxt->glReadDataCount != 0x00){
+                            DBG_APP_ERR("CY_FX_EP_DEV_TO_HOST stall\r\n");
+                            Cy_USB_USBD_EndpSetClearStall(pAppCtxt->pUsbdCtxt, APP_RESPONSE_IN_EP, CY_USB_ENDP_DIR_IN, true);
+                        }
+                    }
+                break;
+            case CY_APP_RSP_SENT_EVT_FLAG:
+                    DBG_APP_TRACE(" CY_APP_RSP_SENT_EVT_FLAG\r\n");
+                break;
             default:
             break;
         }
@@ -624,13 +628,13 @@ CyFxAppHaltEndpoint (
         Cy_USB_USBD_EndpSetClearNakNrdy(pUsbdCtxt, endpNum, epDir, true);
         Cy_SysLib_DelayUs(125);
 
-		if (pAppCtxt->devSpeed < CY_USBD_USB_DEV_SS_GEN1)
-		{
-			if(epDir != CY_USB_ENDP_DIR_OUT)
-				Cy_USBHS_App_ResetEpDma(&(pAppCtxt->endpInDma[endpNum]));
-			else
-				Cy_USBHS_App_ResetEpDma(&(pAppCtxt->endpOutDma[endpNum]));
-		}
+        if (pAppCtxt->devSpeed < CY_USBD_USB_DEV_SS_GEN1)
+        {
+            if(epDir != CY_USB_ENDP_DIR_OUT)
+                Cy_USBHS_App_ResetEpDma(&(pAppCtxt->endpInDma[endpNum]));
+            else
+                Cy_USBHS_App_ResetEpDma(&(pAppCtxt->endpOutDma[endpNum]));
+        }
 
         Cy_USBD_FlushEndp(pUsbdCtxt, endpNum, epDir);
         Cy_USBD_ResetEndp(pUsbdCtxt, endpNum, epDir, true);
@@ -783,13 +787,13 @@ void Cy_USB_AppSetupCallback(void *pAppCtxt, cy_stc_usb_usbd_ctxt_t *pUsbdCtxt,
                 retStatus = Cy_USB_USBD_SendEndp0Data(pUsbdCtxt, (uint8_t *)glOsFeature, wLength);
                 if(retStatus == CY_USBD_STATUS_SUCCESS) {
                     isReqHandled = true;
-                	}
-            	}
-        	}
+                    }
+                }
+            }
         else
         {
-        	isReqHandled = Cy_Jtag_AppHandleVendorCmds(pAppCtxt,bRequest,wValue);
-    	}
+            isReqHandled = Cy_Jtag_AppHandleVendorCmds(pAppCtxt,bRequest,wValue);
+        }
 
         if (isReqHandled) {
             return;
@@ -1211,7 +1215,7 @@ Cy_Jtag_AppCmdRecvCompletion(
     BaseType_t status;
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
-	//Cy_USB_AppQueueRead(pAppCtxt, (uint8_t)APP_CMD_OUT_EP, (uint8_t*)pAppCtxt->glWriteBuffer, CY_APP_MAX_BUFFER_SIZE);
+    //Cy_USB_AppQueueRead(pAppCtxt, (uint8_t)APP_CMD_OUT_EP, (uint8_t*)pAppCtxt->glWriteBuffer, CY_APP_MAX_BUFFER_SIZE);
 
     xMsg.type = CY_APP_QUERY_RCVD_EVT_FLAG;
     status = xQueueSendFromISR(pAppCtxt->usbMsgQueue, &(xMsg),

@@ -544,8 +544,8 @@ int main (void)
 
     while (1)
     {
-    	Cy_SysLib_Delay(10000);
-    	DBG_APP_INFO("Task Idle\r\n");
+        Cy_SysLib_Delay(10000);
+        DBG_APP_INFO("Task Idle\r\n");
     }
 
     return 0;

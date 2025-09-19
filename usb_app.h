@@ -78,7 +78,7 @@ extern "C" {
 #define CY_APP_MAX_BUFFER_COUNT                 (1)
 #define CY_APP_MAX_BUFFER_SIZE                  (0x200)
 
-#define	APP_CMD_OUT_EP                          (0x04)
+#define APP_CMD_OUT_EP                          (0x04)
 #define APP_RESPONSE_IN_EP                      (0x05)
 
 #define CY_USB_DEVICE_MSG_QUEUE_SIZE            (16)

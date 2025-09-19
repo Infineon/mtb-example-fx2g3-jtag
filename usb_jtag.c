@@ -41,23 +41,23 @@ cy_en_jtag_shiftmode_t glJtagShiftMode;
 /* JTAG state transition state machine */
 cy_en_jtag_tapstate_trans_t glJtagStateTrans [16][16] =
 {
-//    0x00       0x01       0x02	   0x03		  0x04		 0x05		0x06	   0x07		  0x08		 0x09		0x0A	   0x0B		  0x0C		 0x0D		0x0E	   0x0F
-    {{0x01, 1},	{0x00, 1}, {0x02, 2}, {0x02, 3}, {0x02, 4}, {0x0A, 4}, {0x0A, 5}, {0x2A, 6}, {0x1A, 5}, {0x06, 3}, {0x06, 4}, {0x06, 5}, {0x16, 5}, {0x16, 6}, {0x56, 7}, {0x36, 6}}, //0x00
-    {{0x1F, 5},	{0x00, 1}, {0x01, 1}, {0x01, 2}, {0x01, 3}, {0x05, 3}, {0x05, 4}, {0x15, 5}, {0x0D, 4}, {0x03, 2}, {0x03, 3}, {0x03, 4}, {0x0B, 4}, {0x0B, 5}, {0x2B, 6}, {0x1B, 5}}, //0x01
-    {{0x1F, 5},	{0x06, 4}, {0x00, 0}, {0x00, 1}, {0x00, 2}, {0x02, 2}, {0x02, 3}, {0x0A, 4}, {0x06, 3}, {0x01, 1}, {0x01, 2}, {0x01, 3}, {0x05, 3}, {0x05, 4}, {0x15, 5}, {0x0D, 4}}, //0x02
-    {{0x1F, 5},	{0x03, 3}, {0x07, 3}, {0x00, 0}, {0x00, 1}, {0x01, 1}, {0x01, 2}, {0x05, 3}, {0x03, 2}, {0x0F, 4}, {0x0F, 5}, {0x0F, 6}, {0x2F, 6}, {0x2F, 7}, {0xAF, 8}, {0x6F, 7}}, //0x03
-    {{0x1F, 5},	{0x03, 3}, {0x07, 3}, {0x07, 4}, {0x00, 1}, {0x01, 1}, {0x01, 2}, {0x05, 3}, {0x03, 2}, {0x0F, 4}, {0x0F, 5}, {0x0F, 6}, {0x2F, 6}, {0x2F, 7}, {0xAF, 8}, {0x6F, 7}}, //0x04
-    {{0x1F, 5},	{0x01, 2}, {0x03, 2}, {0x03, 3}, {0x02, 3}, {0x00, 0}, {0x00, 1}, {0x02, 2}, {0x01, 1}, {0x07, 3}, {0x07, 4}, {0x07, 5}, {0x17, 5}, {0x17, 6}, {0x57, 7}, {0x37, 6}}, //0x05
-    {{0x1F, 5},	{0x03, 3}, {0x07, 3}, {0x07, 4}, {0x01, 2}, {0x05, 3}, {0x00, 1}, {0x01, 1}, {0x03, 2}, {0x0F, 4}, {0x0F, 5}, {0x0F, 6}, {0x2F, 6}, {0x2F, 7}, {0xAF, 8}, {0x6F, 7}}, //0x06
-    {{0x1F, 5},	{0x01, 2}, {0x03, 2}, {0x03, 3}, {0x00, 1}, {0x02, 2}, {0x02, 3}, {0x00, 0}, {0x01, 1}, {0x07, 3}, {0x07, 4}, {0x07, 5}, {0x17, 5}, {0x17, 6}, {0x57, 7}, {0x37, 6}}, //0x07
-    {{0x1F, 5},	{0x00, 1}, {0x01, 1}, {0x01, 2}, {0x01, 3}, {0x05, 3}, {0x05, 4}, {0x15, 5}, {0x00, 0}, {0x03, 2}, {0x03, 3}, {0x03, 4}, {0x0B, 4}, {0x0B, 5}, {0x2B, 6}, {0x1B, 5}}, //0x08
+//    0x00       0x01       0x02       0x03       0x04       0x05       0x06       0x07       0x08       0x09       0x0A       0x0B       0x0C       0x0D       0x0E       0x0F
+    {{0x01, 1}, {0x00, 1}, {0x02, 2}, {0x02, 3}, {0x02, 4}, {0x0A, 4}, {0x0A, 5}, {0x2A, 6}, {0x1A, 5}, {0x06, 3}, {0x06, 4}, {0x06, 5}, {0x16, 5}, {0x16, 6}, {0x56, 7}, {0x36, 6}}, //0x00
+    {{0x1F, 5}, {0x00, 1}, {0x01, 1}, {0x01, 2}, {0x01, 3}, {0x05, 3}, {0x05, 4}, {0x15, 5}, {0x0D, 4}, {0x03, 2}, {0x03, 3}, {0x03, 4}, {0x0B, 4}, {0x0B, 5}, {0x2B, 6}, {0x1B, 5}}, //0x01
+    {{0x1F, 5}, {0x06, 4}, {0x00, 0}, {0x00, 1}, {0x00, 2}, {0x02, 2}, {0x02, 3}, {0x0A, 4}, {0x06, 3}, {0x01, 1}, {0x01, 2}, {0x01, 3}, {0x05, 3}, {0x05, 4}, {0x15, 5}, {0x0D, 4}}, //0x02
+    {{0x1F, 5}, {0x03, 3}, {0x07, 3}, {0x00, 0}, {0x00, 1}, {0x01, 1}, {0x01, 2}, {0x05, 3}, {0x03, 2}, {0x0F, 4}, {0x0F, 5}, {0x0F, 6}, {0x2F, 6}, {0x2F, 7}, {0xAF, 8}, {0x6F, 7}}, //0x03
+    {{0x1F, 5}, {0x03, 3}, {0x07, 3}, {0x07, 4}, {0x00, 1}, {0x01, 1}, {0x01, 2}, {0x05, 3}, {0x03, 2}, {0x0F, 4}, {0x0F, 5}, {0x0F, 6}, {0x2F, 6}, {0x2F, 7}, {0xAF, 8}, {0x6F, 7}}, //0x04
+    {{0x1F, 5}, {0x01, 2}, {0x03, 2}, {0x03, 3}, {0x02, 3}, {0x00, 0}, {0x00, 1}, {0x02, 2}, {0x01, 1}, {0x07, 3}, {0x07, 4}, {0x07, 5}, {0x17, 5}, {0x17, 6}, {0x57, 7}, {0x37, 6}}, //0x05
+    {{0x1F, 5}, {0x03, 3}, {0x07, 3}, {0x07, 4}, {0x01, 2}, {0x05, 3}, {0x00, 1}, {0x01, 1}, {0x03, 2}, {0x0F, 4}, {0x0F, 5}, {0x0F, 6}, {0x2F, 6}, {0x2F, 7}, {0xAF, 8}, {0x6F, 7}}, //0x06
+    {{0x1F, 5}, {0x01, 2}, {0x03, 2}, {0x03, 3}, {0x00, 1}, {0x02, 2}, {0x02, 3}, {0x00, 0}, {0x01, 1}, {0x07, 3}, {0x07, 4}, {0x07, 5}, {0x17, 5}, {0x17, 6}, {0x57, 7}, {0x37, 6}}, //0x07
+    {{0x1F, 5}, {0x00, 1}, {0x01, 1}, {0x01, 2}, {0x01, 3}, {0x05, 3}, {0x05, 4}, {0x15, 5}, {0x00, 0}, {0x03, 2}, {0x03, 3}, {0x03, 4}, {0x0B, 4}, {0x0B, 5}, {0x2B, 6}, {0x1B, 5}}, //0x08
     {{0x01, 1}, {0x06, 4}, {0x0E, 4}, {0x0E, 5}, {0x0E, 6}, {0x2E, 6}, {0x2E, 7}, {0xAE, 8}, {0x6E, 7}, {0x00, 0}, {0x00, 1}, {0x00, 2}, {0x02, 2}, {0x02, 3}, {0x0A, 4}, {0x06, 3}}, //0x09
-    {{0x1F, 5},	{0x03, 3}, {0x07, 3}, {0x07, 4}, {0x07, 5}, {0x17, 5}, {0x17, 6}, {0x57, 7}, {0x37, 6}, {0x0F, 4}, {0x00, 0}, {0x00, 1}, {0x01, 1}, {0x01, 2}, {0x05, 3}, {0x03, 2}}, //0x0A
-    {{0x1F, 5},	{0x03, 3}, {0x07, 3}, {0x07, 4}, {0x07, 5}, {0x17, 5}, {0x17, 6}, {0x57, 7}, {0x37, 6}, {0x0F, 4}, {0x0F, 5}, {0x00, 1}, {0x01, 1}, {0x01, 2}, {0x05, 3}, {0x03, 2}}, //0x0B
-    {{0x1F, 5},	{0x01, 2}, {0x03, 2}, {0x03, 3}, {0x03, 4}, {0x0B, 4}, {0x0B, 5}, {0x2B, 6}, {0x1B, 5}, {0x07, 3}, {0x07, 4}, {0x02, 3}, {0x00, 0}, {0x00, 1}, {0x02, 2}, {0x01, 1}}, //0x0C
-    {{0x1F, 5},	{0x03, 3}, {0x07, 3}, {0x07, 4}, {0x07, 5}, {0x17, 5}, {0x17, 6}, {0x57, 7}, {0x37, 6}, {0x0F, 4}, {0x0F, 5}, {0x01, 2}, {0x05, 3}, {0x00, 1}, {0x01, 1}, {0x03, 2}}, //0x0D
-    {{0x1F, 5},	{0x01, 2}, {0x03, 2}, {0x03, 3}, {0x03, 4}, {0x0B, 4}, {0x0B, 5}, {0x2B, 6}, {0x1B, 5}, {0x07, 3}, {0x07, 4}, {0x00, 1}, {0x02, 2}, {0x02, 3}, {0x00, 0}, {0x01, 1}}, //0x0E
-    {{0x1F, 5},	{0x00, 1}, {0x01, 1}, {0x01, 2}, {0x01, 3}, {0x05, 3}, {0x05, 4}, {0x15, 5}, {0x0D, 4}, {0x03, 2}, {0x03, 3}, {0x03, 4}, {0x0B, 4}, {0x0B, 5}, {0x2B, 6}, {0x00, 0}}  //0x0F
+    {{0x1F, 5}, {0x03, 3}, {0x07, 3}, {0x07, 4}, {0x07, 5}, {0x17, 5}, {0x17, 6}, {0x57, 7}, {0x37, 6}, {0x0F, 4}, {0x00, 0}, {0x00, 1}, {0x01, 1}, {0x01, 2}, {0x05, 3}, {0x03, 2}}, //0x0A
+    {{0x1F, 5}, {0x03, 3}, {0x07, 3}, {0x07, 4}, {0x07, 5}, {0x17, 5}, {0x17, 6}, {0x57, 7}, {0x37, 6}, {0x0F, 4}, {0x0F, 5}, {0x00, 1}, {0x01, 1}, {0x01, 2}, {0x05, 3}, {0x03, 2}}, //0x0B
+    {{0x1F, 5}, {0x01, 2}, {0x03, 2}, {0x03, 3}, {0x03, 4}, {0x0B, 4}, {0x0B, 5}, {0x2B, 6}, {0x1B, 5}, {0x07, 3}, {0x07, 4}, {0x02, 3}, {0x00, 0}, {0x00, 1}, {0x02, 2}, {0x01, 1}}, //0x0C
+    {{0x1F, 5}, {0x03, 3}, {0x07, 3}, {0x07, 4}, {0x07, 5}, {0x17, 5}, {0x17, 6}, {0x57, 7}, {0x37, 6}, {0x0F, 4}, {0x0F, 5}, {0x01, 2}, {0x05, 3}, {0x00, 1}, {0x01, 1}, {0x03, 2}}, //0x0D
+    {{0x1F, 5}, {0x01, 2}, {0x03, 2}, {0x03, 3}, {0x03, 4}, {0x0B, 4}, {0x0B, 5}, {0x2B, 6}, {0x1B, 5}, {0x07, 3}, {0x07, 4}, {0x00, 1}, {0x02, 2}, {0x02, 3}, {0x00, 0}, {0x01, 1}}, //0x0E
+    {{0x1F, 5}, {0x00, 1}, {0x01, 1}, {0x01, 2}, {0x01, 3}, {0x05, 3}, {0x05, 4}, {0x15, 5}, {0x0D, 4}, {0x03, 2}, {0x03, 3}, {0x03, 4}, {0x0B, 4}, {0x0B, 5}, {0x2B, 6}, {0x00, 0}}  //0x0F
 };
 
 /*******************************************************************************
@@ -85,29 +85,29 @@ void Cy_Jtag_GpioInit (void)
     status = Cy_GPIO_Pin_Init(GPIO_PORT_JTAG_TDO, GPIO_JTAG_TDO, &pinCfg);
     if(status != 0)
     {
-    	DBG_APP_ERR("GPIO inti failed %x \n\r",status);
+        DBG_APP_ERR("GPIO inti failed %x \n\r",status);
     }
 
     pinCfg.driveMode = CY_GPIO_DM_STRONG_IN_OFF;
     status = Cy_GPIO_Pin_Init(GPIO_PORT_JTAG_TDI, GPIO_JTAG_TDI, &pinCfg);
     if(status != 0)
     {
-    	DBG_APP_ERR("GPIO inti failed %x \n\r",status);
+        DBG_APP_ERR("GPIO inti failed %x \n\r",status);
     }
     status = Cy_GPIO_Pin_Init(GPIO_PORT_JTAG_TMS, GPIO_JTAG_TMS, &pinCfg);
     if(status != 0)
     {
-    	DBG_APP_ERR("GPIO inti failed %x \n\r",status);
+        DBG_APP_ERR("GPIO inti failed %x \n\r",status);
     }
     status = Cy_GPIO_Pin_Init(GPIO_PORT_JTAG_TCK, GPIO_JTAG_TCK, &pinCfg);
     if(status != 0)
     {
-    	DBG_APP_ERR("GPIO inti failed %x \n\r",status);
+        DBG_APP_ERR("GPIO inti failed %x \n\r",status);
     }
     status = Cy_GPIO_Pin_Init(GPIO_PORT_JTAG_TRST, GPIO_JTAG_TRST, &pinCfg);
     if(status != 0)
     {
-    	DBG_APP_ERR("GPIO inti failed %x \n\r",status);
+        DBG_APP_ERR("GPIO inti failed %x \n\r",status);
     }
 
     DBG_APP_INFO("Cy_Jtag_GpioInit \n\r");
@@ -128,8 +128,8 @@ void Cy_Jtag_GpioInit (void)
  *******************************************************************************/
 static void Cy_Jtag_SetTck(bool tckVal)
 {
-	Cy_GPIO_Write(GPIO_PORT_JTAG_TCK, GPIO_JTAG_TCK, tckVal);
-	Cy_SysLib_DelayUs(1);
+    Cy_GPIO_Write(GPIO_PORT_JTAG_TCK, GPIO_JTAG_TCK, tckVal);
+    Cy_SysLib_DelayUs(1);
 }
 
 /*******************************************************************************
@@ -147,8 +147,8 @@ static void Cy_Jtag_SetTck(bool tckVal)
  *******************************************************************************/
 static void Cy_Jtag_SetTms(bool tmsVal)
 {
-	bool tmsLastVal;
-	tmsLastVal = Cy_GPIO_ReadOut(GPIO_PORT_JTAG_TMS, GPIO_JTAG_TMS);
+    bool tmsLastVal;
+    tmsLastVal = Cy_GPIO_ReadOut(GPIO_PORT_JTAG_TMS, GPIO_JTAG_TMS);
     if(tmsVal != tmsLastVal){
         Cy_GPIO_Write(GPIO_PORT_JTAG_TMS, GPIO_JTAG_TMS, tmsVal);
     }
@@ -170,7 +170,7 @@ static void Cy_Jtag_SetTms(bool tmsVal)
 static void Cy_Jtag_SetTdi(bool tdiVal)
 {
     bool tdiLastVal;
-	tdiLastVal = Cy_GPIO_ReadOut(GPIO_PORT_JTAG_TDI, GPIO_JTAG_TDI);
+    tdiLastVal = Cy_GPIO_ReadOut(GPIO_PORT_JTAG_TDI, GPIO_JTAG_TDI);
     if(tdiVal != tdiLastVal){
         Cy_GPIO_Write(GPIO_PORT_JTAG_TDI, GPIO_JTAG_TDI, tdiVal);
     }
@@ -194,8 +194,8 @@ static void Cy_Jtag_SetTdi(bool tdiVal)
  *******************************************************************************/
 static void Cy_Jtag_UpdateTmsTdi(bool tmsVal, bool tdiVal)
 {
-	Cy_Jtag_SetTdi(tdiVal);
-	Cy_Jtag_SetTms(tmsVal);
+    Cy_Jtag_SetTdi(tdiVal);
+    Cy_Jtag_SetTms(tmsVal);
 }
 
 /*******************************************************************************
@@ -213,14 +213,14 @@ static void Cy_Jtag_UpdateTmsTdi(bool tmsVal, bool tdiVal)
  *******************************************************************************/
 static void Cy_Jtag_ResetTapState(void)
 {
-	uint8_t i = 0;
-	for (i = 0; i < 5; i++){
-		Cy_Jtag_SetTck(false);
-		Cy_Jtag_UpdateTmsTdi (CY_U3P_JTAG_TMS_HIGH, CY_U3P_JTAG_TDI_LOW);
-		Cy_Jtag_SetTck(true);
-	}
-	/* Set the Initial JTAG TAP State */
-	glJtagTapState = CY_U3P_JTAG_TAP_TEST_LOGIC_RESET;
+    uint8_t i = 0;
+    for (i = 0; i < 5; i++){
+        Cy_Jtag_SetTck(false);
+        Cy_Jtag_UpdateTmsTdi (CY_U3P_JTAG_TMS_HIGH, CY_U3P_JTAG_TDI_LOW);
+        Cy_Jtag_SetTck(true);
+    }
+    /* Set the Initial JTAG TAP State */
+    glJtagTapState = CY_U3P_JTAG_TAP_TEST_LOGIC_RESET;
 }
 
 /*******************************************************************************
@@ -248,8 +248,8 @@ static void Cy_Jtag_ChangeTapState (cy_en_jtag_tapstate_t state)
 
     for (i = 0; i < numTrans; i++){
         /* Set/Clear the TMS Line */
-    	Cy_Jtag_SetTck(false);
-    	Cy_Jtag_UpdateTmsTdi(((bitMap >> i) & 0x01), 0);
+        Cy_Jtag_SetTck(false);
+        Cy_Jtag_UpdateTmsTdi(((bitMap >> i) & 0x01), 0);
         Cy_Jtag_SetTck(true);
     }
 
@@ -432,8 +432,8 @@ void Cy_Jtag_ParseData(uint8_t *data, uint16_t length, uint8_t *readData)
                 if (glJtagTapState == CY_U3P_JTAG_TAP_RUN_TEST_IDLE){
                     temp = (data[index] >> 4) + 1;
                     for (i = 0; i < temp; i++){
-                    	Cy_Jtag_SetTck(false);
-                    	Cy_Jtag_UpdateTmsTdi(CY_U3P_JTAG_TMS_LOW, CY_U3P_JTAG_TDI_LOW);
+                        Cy_Jtag_SetTck(false);
+                        Cy_Jtag_UpdateTmsTdi(CY_U3P_JTAG_TMS_LOW, CY_U3P_JTAG_TDI_LOW);
                         Cy_Jtag_SetTck(true);
                     }
                 }
@@ -464,7 +464,7 @@ void Cy_Jtag_ParseData(uint8_t *data, uint16_t length, uint8_t *readData)
  *******************************************************************************/
 static uint8_t Cy_Jtag_Init(cy_stc_usb_app_ctxt_t *pAppCtxt)
 {
-	uint8_t status = CY_USB_APP_STATUS_SUCCESS;
+    uint8_t status = CY_USB_APP_STATUS_SUCCESS;
 
     Cy_Jtag_ResetTapState ();
     glJtagShiftMode = CY_U3P_JTAG_SHIFT_LSB_FIRST;
@@ -475,7 +475,7 @@ static uint8_t Cy_Jtag_Init(cy_stc_usb_app_ctxt_t *pAppCtxt)
 
 /*******************************************************************************
  * Function name: Cy_Jtag_AppHandleVendorCmds(cy_stc_usb_app_ctxt_t *pAppCtxt,
- * 											uint8_t bRequest, uint16_t wValue)
+ *                                          uint8_t bRequest, uint16_t wValue)
  ****************************************************************************//**
  *
  * This function handles the USB Vendor commands
@@ -485,7 +485,7 @@ static uint8_t Cy_Jtag_Init(cy_stc_usb_app_ctxt_t *pAppCtxt)
  * application layer context pointer
  *
  * \param bRequest
- * 	bRequest control request field
+ *  bRequest control request field
  * 
  * \param wValue
  *  wValue control request field
@@ -514,36 +514,36 @@ bool Cy_Jtag_AppHandleVendorCmds(cy_stc_usb_app_ctxt_t *pAppCtxt, uint8_t bReque
     }
 
     }
-	 else if(bRequest == CY_U3P_VENDOR_JTAG_DISABLE)
-	 {
-		DBG_APP_TRACE("JTAG:CY_U3P_VENDOR_JTAG_DISABLE  \n\r");
-		jtagStateMachine = JTAG_TAP_STOP;
-		Cy_USBD_SendACkSetupDataStatusStage(pAppCtxt->pUsbdCtxt);
-		isReqHandled = true;
-	 }
-	 else if(bRequest == CY_U3P_VENDOR_JTAG_READ)
-	 {
-		 DBG_APP_TRACE("CY_U3P_VENDOR_JTAG_READ \n\r");
-		pAppCtxt->glReadDataCount = wValue;
-		jtagStateMachine = JTAG_TAP_INT_EP_READ_D2;
-		Cy_USBD_SendACkSetupDataStatusStage(pAppCtxt->pUsbdCtxt);
-		isReqHandled = true;
+     else if(bRequest == CY_U3P_VENDOR_JTAG_DISABLE)
+     {
+        DBG_APP_TRACE("JTAG:CY_U3P_VENDOR_JTAG_DISABLE  \n\r");
+        jtagStateMachine = JTAG_TAP_STOP;
+        Cy_USBD_SendACkSetupDataStatusStage(pAppCtxt->pUsbdCtxt);
+        isReqHandled = true;
+     }
+     else if(bRequest == CY_U3P_VENDOR_JTAG_READ)
+     {
+         DBG_APP_TRACE("CY_U3P_VENDOR_JTAG_READ \n\r");
+        pAppCtxt->glReadDataCount = wValue;
+        jtagStateMachine = JTAG_TAP_INT_EP_READ_D2;
+        Cy_USBD_SendACkSetupDataStatusStage(pAppCtxt->pUsbdCtxt);
+        isReqHandled = true;
 
-		 xMsg.type = CY_APP_SEND_RSP_EVT_FLAG;
-		 xQueueSendFromISR(pAppCtxt->usbMsgQueue, &(xMsg), &(xHigherPriorityTaskWoken));
+         xMsg.type = CY_APP_SEND_RSP_EVT_FLAG;
+         xQueueSendFromISR(pAppCtxt->usbMsgQueue, &(xMsg), &(xHigherPriorityTaskWoken));
 
-	 }
-	 else if(bRequest == CY_U3P_VENDOR_JTAG_WRITE)
-	 {
-		DBG_APP_TRACE("CY_U3P_VENDOR_JTAG_WRITE \n\r");
-		pAppCtxt->glWriteDataCount = wValue;
-		pAppCtxt->glWriteBufferIdx = 0;
-		jtagStateMachine = JTAG_TAP_INT_EP_WRITE_D3;
-		Cy_USBD_SendACkSetupDataStatusStage(pAppCtxt->pUsbdCtxt);
-		isReqHandled = true;
-	 }
+     }
+     else if(bRequest == CY_U3P_VENDOR_JTAG_WRITE)
+     {
+        DBG_APP_TRACE("CY_U3P_VENDOR_JTAG_WRITE \n\r");
+        pAppCtxt->glWriteDataCount = wValue;
+        pAppCtxt->glWriteBufferIdx = 0;
+        jtagStateMachine = JTAG_TAP_INT_EP_WRITE_D3;
+        Cy_USBD_SendACkSetupDataStatusStage(pAppCtxt->pUsbdCtxt);
+        isReqHandled = true;
+     }
 
-	 return isReqHandled;
+     return isReqHandled;
 }
 
 
